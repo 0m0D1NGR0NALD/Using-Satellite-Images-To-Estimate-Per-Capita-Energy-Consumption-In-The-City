@@ -32,11 +32,11 @@ def create_app(test_config=None):
         return "Hello world"
 
     
-    image_path = 'C:/Users/ronal/Notebooks/Computer Vision/mumbai.png'
+    image_path = 'mumbai.png'
     
     def inference():
-        model = torch.hub.load('ultralytics/yolov5', 'custom', 'C:/Users/ronal/Notebooks/Computer Vision/best.pt')
-        results = model('C:/Users/ronal/Notebooks/Computer Vision/mumbai.png')
+        model = torch.hub.load('ultralytics/yolov5', 'custom', 'best.pt')
+        results = model('mumbai.png')
         max_width = results.xyxy[0][0][2]
         max_height = results.xyxy[0][0][3]
         max_area = max_width * max_height
@@ -113,10 +113,6 @@ def create_app(test_config=None):
                     'energy_intensity': i_of_area, 'percentage_of_domestic': percentage_of_domestic, 'percentage_of_commercial': percentage_of_commercial, 
                     'percentage_of_industrial': percentage_of_industrial, 
                     'suggestions': {'suggestion1': suggestion1, 'suggestion2': suggestion2}})
-
-    # @app.get("/hello")
-    # def say_hello():
-    #     return {"message": "Hello World"}
 
     db.app = app
     db.init_app(app)
