@@ -1,7 +1,8 @@
 from flask import Flask, jsonify, render_template
 import os
-from src.auth import auth 
-from src.database import db
+import auth
+import database
+from database import db
 from flask_jwt_extended import JWTManager
 import torch
 import pandas as pd 
@@ -25,12 +26,6 @@ def create_app(test_config=None):
 
     else:
         app.config.from_mapping(test_config)
-
-    
-    @app.get("/")
-    def index():
-        return "Hello world"
-
     
     image_path = 'mumbai.png'
     
