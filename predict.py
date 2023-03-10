@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+
 # Loading classification model
 model =  tf.keras.models.load_model('model.h5')
 # Loading image path of sample image
@@ -34,5 +35,6 @@ def predict(array):
         output = print('Residential Area')
     # Return predicted area    
     return output
+
 # Preprocessing image path and performing prediction
 predict(preprocess(image_path))
